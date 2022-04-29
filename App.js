@@ -24,6 +24,9 @@ const App = () => {
     CustomModule.checkCallback((msg) => {
       console.log(msg)
     })
+    CustomModule.checkPromise().then((msg) => {
+      console.log(msg)
+    })
   }, [])
   return (
     <SafeAreaView style={styles.background}>

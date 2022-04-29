@@ -6,6 +6,7 @@ import com.facebook.react.bridge.ReactContext;
 import com.facebook.react.bridge.ReactContextBaseJavaModule;
 import com.facebook.react.bridge.ReactMethod;
 import com.facebook.react.bridge.Callback;
+import com.facebook.react.bridge.Promise;
 import android.os.Handler;
 import java.util.Map;
 import java.util.HashMap;
@@ -32,6 +33,17 @@ public class CustomModule extends ReactContextBaseJavaModule {
             @Override
             public void run() {
                 callback.invoke("success");
+            }
+        }, 2000);
+    }
+
+    @ReactMethod
+    public void checkPromise(Promise promise) {
+        Handler handler = new Handler();
+        handler.postDelayed(new Runnable() {
+            @Override
+            public void run() {
+                promise.resolve("success");
             }
         }, 2000);
     }
